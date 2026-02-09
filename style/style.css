@@ -1,12 +1,72 @@
 body.main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    font-family: Lucida Handwriting;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  font-family: "Lucida Handwriting";
+  background-color: #ffe6f0;
+  overflow: hidden;
+  position: relative;
 }
+
+/* container for hearts */
+.hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* single heart */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  transform: rotate(45deg);
+  animation: float 8s linear infinite;
+  opacity: 0.7;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+/* floating animation */
+@keyframes float {
+  0% {
+      transform: translateY(100vh) rotate(45deg);
+      opacity: 0;
+  }
+  20% {
+      opacity: 0.8;
+  }
+  100% {
+      transform: translateY(-10vh) rotate(45deg);
+      opacity: 0;
+  }
+}
+
 
 .container {
     display: flex;
@@ -22,7 +82,6 @@ body.main {
 }
 
 
-
 img {
     align-items: center;
     width: 50%;
@@ -35,6 +94,34 @@ img {
 .container-header {
     margin-bottom: 2.5rem;
 }
+
+.container-header {
+	place-self: center;
+	background: linear-gradient(90deg, rgb(255, 0, 212), rgb(253, 174, 229), rgb(250, 56, 240)) -100%/ 200%;
+	/* being excessively careful with compat, 
+	 * though this has been supported unprefixed and 
+	 * in the shorthand across major browsers for a while;
+	 * but it catches the latest browser versions supported 
+	 * on Wndows XP, 7 and 8; yeah, they exist in 2025 */
+	-webkit-background-clip: text;
+	        background-clip: text;
+	/* use color, don't use -webkit-text-fill-color anymore, 
+	 * was meant to solve a problem we haven't had in years */
+	color: transparent;
+	animation: shimmer 2s linear infinite
+}
+
+@keyframes shimmer { to { background-position: 100% } }
+
+/* avoid problems in high contrast mode */
+@media (forced-colors: active) {
+  p {
+    background: #212121;
+    color: aquamarine
+  }
+}
+
+@keyframes shimmer { to { background-position: 100% } }
 
 .btn-container {
     display: flex;
