@@ -23,10 +23,10 @@
     overlay.style.left = '0';
     overlay.style.width = '100%';
     overlay.style.height = '100%';
-    overlay.style.backgroundColor = '#00FF00';
+    overlay.style.backgroundColor = '#00ff0000';
     overlay.style.zIndex = '9998';
     overlay.style.opacity = '0';
-    overlay.style.pointerEvents = 'none';
+    overlay.style.pointerEvents = 'none'; 
     overlay.style.transition = 'opacity 0.2s';
     document.body.appendChild(overlay);
 
@@ -36,10 +36,11 @@
         gif.src = 'https://raw.githubusercontent.com/orlyjamie/spinningcat/main/cat.gif';
         gif.style.position = 'fixed';
         gif.style.zIndex = '9999';
-        gif.style.width = '30rem';
+        gif.style.height = '15rem';
+        gif.style.width = '15rem';
         gif.style.top = Math.random() * (window.innerHeight - 150) + 'px';
         gif.style.left = Math.random() * (window.innerWidth - 150) + 'px';
-        gif.style.animation = 'spin 2s linear infinite';
+        gif.style.animation = 'spin 7s linear infinite';
         document.body.appendChild(gif);
 
         setTimeout(() => gif.remove(), 10000);
